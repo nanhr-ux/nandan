@@ -2,164 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Proctor Student Report</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      animation: bgMove 10s infinite alternate;
-    }
-
-
-
-    .container {
-      width: 90%;
-      max-width: 900px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
-      border-radius: 20px;
-      padding: 25px;
-      color: #fff;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      animation: slideUp 1.2s ease;
-    }
-
-
-    h1 {
-      text-align: center;
-      margin-bottom: 10px;
-      font-size: 2.2rem;
-      letter-spacing: 1px;
-    }
-
-    h2 {
-      text-align: center;
-      font-weight: normal;
-      margin-bottom: 25px;
-      color: #ffeb3b;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      overflow: hidden;
-      border-radius: 15px;
-      animation: fadeIn 1.5s ease;
-    }
-
-
-
-    th, td {
-      padding: 14px;
-      text-align: center;
-    }
-
-    th {
-      background: rgba(0,0,0,0.3);
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-    }
-
-    tr {
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-
-    tr:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: scale(1.02);
-    }
-
-    td {
-      background: rgba(255,255,255,0.08);
-    }
-
-    input {
-      width: 70px;
-      padding: 6px;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    .footer {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.9;
-      animation: pulse 2s infinite;
-    }
-
-
-  </style>
+  <title>Proctor Login & Student Report</title>
 </head>
 <body>
+    <link rel="stylesheet" href="style.css">
 
-  <div class="container">
-    <h1>Student Report Management</h1>
-    <h2>Proctor : Imran</h2>
+<div class="login-box" id="loginBox">
+  <h2>Proctor Login</h2>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <div class="error" id="error">Invalid login credentials</div>
+</div>
 
-    <table>
-      <tr>
-        <th>Sl No</th>
-        <th>Student Name</th>
-        <th>Attendance (%)</th>
-        <th>Marks</th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>Abhi</td>
-        <td><input type="number" value="85"></td>
-        <td><input type="number" value="78"></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Monish</td>
-        <td><input type="number" value="90"></td>
-        <td><input type="number" value="82"></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Nandan</td>
-        <td><input type="number" value="88"></td>
-        <td><input type="number" value="80"></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Pathi</td>
-        <td><input type="number" value="92"></td>
-        <td><input type="number" value="85"></td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>Pavan</td>
-        <td><input type="number" value="84"></td>
-        <td><input type="number" value="76"></td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>Kiran</td>
-        <td><input type="number" value="89"></td>
-        <td><input type="number" value="81"></td>
-      </tr>
-    </table>
+<div class="container" id="dashboard">
+  <h1>Student Report Management</h1>
+  <h2>Proctor : Imran</h2>
+  <div style="text-align:right; margin-bottom:10px;">
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
 
-    <div class="footer">
-      SRI KRISHNA INSTITUTE OF TECHNOLOGY
-    </div>
+
+  <table>
+    <tr><th>Sl No</th><th>Name</th><th>Marks</th></tr>
+    <tr onclick="showDetails('Abhi','Ramesh','9876543210','78')"><td>1</td><td>Abhi</td><td>78</td></tr>
+    <tr onclick="showDetails('Monish','Suresh','9876501234','82')"><td>2</td><td>Monish</td><td>82</td></tr>
+    <tr onclick="showDetails('Nandan','Mahesh','9876598765','80')"><td>3</td><td>Nandan</td><td>80</td></tr>
+    <tr onclick="showDetails('Pathi','Ravi','9876512345','85')"><td>4</td><td>Pathi</td><td>85</td></tr>
+    <tr onclick="showDetails('Pavan','Kumar','9876587654','76')"><td>5</td><td>Pavan</td><td>76</td></tr>
+    <tr onclick="showDetails('Kiran','Naresh','9876534567','81')"><td>6</td><td>Kiran</td><td>81</td></tr>
+  </table>
+
+  <div class="footer"><b>SRI KRISHNA INSTITUTE OF TECHNOLOGY</b></div>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h3 id="pName"></h3>
+    <p><b>Father:</b> <span id="pFather"></span></p>
+    <p><b>Contact:</b> <span id="pContact"></span></p>
+   
+    <p><b>Marks:</b> <span id="pMarks"></span></p>
+    <button class="close" onclick="closePopup()">Close</button>
+
   </div>
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>

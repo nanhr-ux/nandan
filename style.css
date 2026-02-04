@@ -1,6 +1,119 @@
-h1{
-    color: aquamarine;
+
+    *{
+      margin:0; padding:0; box-sizing:border-box;
+      font-family:'Segoe UI',sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      background:linear-gradient(135deg,#667eea,#764ba2);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    /* LOGIN */
+    .login-box{
+      background:rgba(255,255,255,0.15);
+      backdrop-filter:blur(12px);
+      padding:30px;
+      border-radius:20px;
+      width:320px;
+      text-align:center;
+      color:#fff;
+      box-shadow:0 20px 40px rgba(0,0,0,0.3);
+      animation:slideUp 1s ease;
+    }
+
+    .login-box h2{
+      margin-bottom:20px;
+    }
+
+    .login-box input{
+      width:100%;
+      padding:10px;
+      margin:10px 0;
+      border:none;
+      border-radius:10px;
+      outline:none;
+    }
+
+    .login-box button{
+      width:100%;
+      padding:10px;
+      margin-top:15px;
+      border:none;
+      border-radius:10px;
+      background:#ffeb3b;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .error{
+      color:#ffcccc;
+      margin-top:10px;
+      display:none;
+    }
+    .logout-btn{
+  padding:8px 16px;
+  border:none;
+  border-radius:8px;
+  background:#ff5252;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
 }
-h2{
-    font: 100;
+
+.logout-btn:hover{
+  background:#ff1744;
+  transform:scale(1.05);
 }
+
+
+    /* DASHBOARD */
+    .container{
+      display:none;
+      width:90%;
+      max-width:900px;
+      background:rgba(255,255,255,0.15);
+      backdrop-filter:blur(12px);
+      border-radius:20px;
+      padding:25px;
+      color:#fff;
+      box-shadow:0 20px 40px rgba(0,0,0,0.3);
+      animation:slideUp 1s ease;
+    }
+
+    @keyframes slideUp{
+      from{transform:translateY(40px);opacity:0}
+      to{transform:translateY(0);opacity:1}
+    }
+
+    h1{text-align:center;}
+    h2{text-align:center;color:#ffeb3b;margin-bottom:25px;font-weight:normal}
+
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:14px;text-align:center}
+    th{background:rgba(0,0,0,0.3)}
+    td{background:rgba(255,255,255,0.08)}
+    tr{cursor:pointer;transition:.3s}
+    tr:hover{background:rgba(255,255,255,0.2);transform:scale(1.02)}
+
+    .footer{text-align:center;margin-top:20px;font-size:.9rem}
+
+    /* POPUP */
+    .popup{
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,.6);
+      display:none;justify-content:center;align-items:center
+    }
+
+    .popup-content{
+      background:#fff;color:#333;padding:25px;border-radius:15px;width:320px;
+      animation:slideUp .4s ease
+    }
+
+    .popup-content h3{text-align:center;color:#5a4fcf}
+    .popup-content p{margin:8px 0}
+    .close{margin-top:15px;width:100%;padding:8px;border:none;border-radius:8px;background:#5a4fcf;color:#fff;cursor:pointer}
